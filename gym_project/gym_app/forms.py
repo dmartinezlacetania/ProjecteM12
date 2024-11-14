@@ -15,8 +15,8 @@ class UserLoginForm(forms.Form):
     
 class ProfileEditForm(forms.ModelForm):
     email = forms.EmailField(required=True, label='Email')
-    first_name = forms.CharField(label='Nombre', max_length=30)
-    last_name = forms.CharField(label='Apellido', max_length=30)
+    first_name = forms.CharField(label='Nom', max_length=30)
+    last_name = forms.CharField(label='Cognoms', max_length=30)
     
     class Meta:
         model = User
