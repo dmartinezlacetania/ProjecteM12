@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{% if exercise %}Editar{% else %}Crear{% endif %} Rutina</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary mt-3">{% if exercise %}Guardar{% else %}Crear{% endif %} Rutina</button>
+        
+        <a href="{% url 'gym_trainer:routine_list' %}" class="btn btn-secondary mt-3">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

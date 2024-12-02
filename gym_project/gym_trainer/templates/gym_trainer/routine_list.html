@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Llista de Rutines</h1>
+    
+    <!-- Formulario para crear/editar rutina -->
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Campos de la rutina -->
+        {{ form.routines}}
+        
+        <!-- Lista de ejercicios disponibles -->
+        <a href="{% url 'gym_trainer:routine_create' %}" class="btn btn-secondary mt-3">Crear Rutina</a>
+        <div class="form-group">
+            {% for routine in routines %}
+                <div>
+                    <label><a href="{% url 'gym_trainer:exercise_edit' routine.id%}">{{ routine.name }}</a></label> 
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{% if exercise %}Editar{% else %}Crear{% endif %} Exercisi</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}" class="form-label">
+                {{ field.label }}
+            </label><br>
+            {{ field.errors }}
+            {{ field }}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary mt-3">{% if exercise %}Guardar{% else %}Crear{% endif %} Exercisi</button>
+        
+        <a href="{% url 'gym_trainer:exercise_list' %}" class="btn btn-secondary mt-3">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
